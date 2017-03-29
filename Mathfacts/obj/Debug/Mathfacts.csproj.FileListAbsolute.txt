@@ -1,0 +1,6 @@
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\bin\Debug\Mathfacts.exe.config
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\bin\Debug\Mathfacts.exe
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\bin\Debug\Mathfacts.pdb
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\obj\Debug\Mathfacts.csprojResolveAssemblyReference.cache
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\obj\Debug\Mathfacts.exe
+c:\users\melody\documents\visual studio 2017\Projects\Mathfacts\Mathfacts\obj\Debug\Mathfacts.pdb
