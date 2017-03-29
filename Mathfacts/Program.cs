@@ -10,14 +10,18 @@ namespace Mathfacts
     {
         static void Main(string[] args)
         {
+            //DECLARING
             Console.Title = "Math Facts App";
             int choice = 0;
             Addition addTable = new Addition();
             Multiplication multiplactation = new Multiplication();
+            Division division = new Division();
+            //MAIN LOOP
             do
-            {
+            {   //MAIN TITILE SCREEN
                 MainAppTitle();
                 choice = MainMenu();
+                //OPTION 1: ADDITION
                 if (choice == 1)         
                 {
                     bool continueChoice = true;
@@ -84,7 +88,7 @@ namespace Mathfacts
                     
                 }
 
-                //Multiplication
+                //OPTION 2: MULTIPLICATION
                 if (choice == 2)
                 {
                     bool continueChoice = true;
@@ -114,7 +118,7 @@ namespace Mathfacts
                                 Console.WriteLine("");
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Your Multiplication Table for {0} - {1}", startNum, endNum);
-                                Console.ForegroundColor = ConsoleColor.White;
+                                //Console.ForegroundColor = ConsoleColor.White;  //Makes the table white
                                 Console.WriteLine("");
                                 multiplactation.MultiplicationTitle(startNum, endNum);
 
@@ -123,7 +127,7 @@ namespace Mathfacts
                                 {
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.WriteLine("Would you Like more mutiplication facts [y/n]");
-                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     string moreFacts = Console.ReadLine();
                                     if (moreFacts == "y")
                                     {
@@ -149,11 +153,78 @@ namespace Mathfacts
 
                 }
 
+                //OPTION 3: DIVISION
+                //TODO - make the decimal stop at .00
+                //TODO - maybe change to subtraction
+                if (choice == 3)
+                {
+                    bool continueChoice = true;
+                    decimal startNum = 0;
+                    decimal endNum = 0;
+                    do
+                    {
+                        division.DivisionTitle();
+                        try
+                        {
+                            Console.WriteLine("Enter your staring number.");
+                            startNum = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter your ending number.");
+                            endNum = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Please enter a valid Number.");
+                            Console.ReadLine();
+
+                        }
+                        finally
+                        {
+                            if (startNum > 0 && endNum <= 10)
+                            {
+                                division.DivisionTitle();
+                                Console.WriteLine("");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Your Division Table for {0} - {1}", startNum, endNum);
+                                //Console.ForegroundColor = ConsoleColor.White;  //Makes the table white
+                                Console.WriteLine("");
+                                division.DivisionTitle(startNum, endNum);
+
+                                Console.WriteLine("");
+                                try
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("Would you Like more division facts [y/n]");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    string moreFacts = Console.ReadLine();
+                                    if (moreFacts == "y")
+                                    {
+                                        continueChoice = true;
+                                    }
+                                    else if (moreFacts == "n")
+                                    {
+                                        continueChoice = false;
+                                    }
 
 
-            } while (choice != 3);
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            }
+                        }
+
+                    } while (continueChoice == true);
+
+                }
+
+                //TODO - ABOVE ADD NEW OPTION
+                //BREAK OUT
+            } while (choice != 4);
         }
-
+        //MENU
         private static int MainMenu()
         {
             int choice;
@@ -164,12 +235,13 @@ namespace Mathfacts
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Option 1: Addition Facts");
             Console.WriteLine("Option 2: Mutiplication Facts");
-            Console.WriteLine("Option 3: Quit Math Facts");
+            Console.WriteLine("Option 3: Division Facts");
+            Console.WriteLine("Option 4: Quit Math Facts");
             //TODO - fix the exception handling
             choice = Int32.Parse(Console.ReadLine());
             return choice;
         }
-
+        //MAIN TITLE
         private static void MainAppTitle()
         {
             Console.Clear();
