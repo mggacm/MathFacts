@@ -13,11 +13,11 @@ namespace Mathfacts
             Console.Title = "Math Facts App";
             int choice = 0;
             Addition addTable = new Addition();
+            Multiplication multiplactation = new Multiplication();
             do
             {
                 MainAppTitle();
                 choice = MainMenu();
-                //TODO - handle addition choice       
                 if (choice == 1)         
                 {
                     bool continueChoice = true;
@@ -42,7 +42,6 @@ namespace Mathfacts
                         }
                         finally
                         {
-                            //TODO - validate startNum and endNum
                             if (startNum > 0 && endNum <= 10)
                             {
                                 addTable.AdditionTitle();
@@ -77,7 +76,6 @@ namespace Mathfacts
                                 }
                             }
                             
-                            //Build logic to allow a user to continue or end addtion portion
                         }
  
 
@@ -86,6 +84,70 @@ namespace Mathfacts
                     
                 }
 
+                //Multiplication
+                if (choice == 2)
+                {
+                    bool continueChoice = true;
+                    int startNum = 0;
+                    int endNum = 0;
+                    do
+                    {
+                        multiplactation.MultiplicationTitle();
+                        try
+                        {
+                            Console.WriteLine("Enter your staring number");
+                            startNum = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter your ending number");
+                            endNum = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Please enter a valid Number");
+                            Console.ReadLine();
+
+                        }
+                        finally
+                        {
+                            if (startNum > 0 && endNum <= 10)
+                            {
+                                multiplactation.MultiplicationTitle();
+                                Console.WriteLine("");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Your Multiplication Table for {0} - {1}", startNum, endNum);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("");
+                                multiplactation.MultiplicationTitle(startNum, endNum);
+
+                                Console.WriteLine("");
+                                try
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("Would you Like more mutiplication facts [y/n]");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    string moreFacts = Console.ReadLine();
+                                    if (moreFacts == "y")
+                                    {
+                                        continueChoice = true;
+                                    }
+                                    else if (moreFacts == "n")
+                                    {
+                                        continueChoice = false;
+                                    }
+
+
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            }
+                        }
+
+                    } while (continueChoice == true);
+
+                }
 
 
 
