@@ -50,7 +50,7 @@ namespace Mathfacts
                 Console.Write(string.Format("{0,6}", i));
                 for (double b = startNum; b <= endNum; b++)
                 {
-                    string output = string.Format("{0:0.00 } ", i / b);         //Here is the issue
+                    string output = string.Format("  {0:0.00}", i / b);         
                     Console.Write(output);
 
                 }
