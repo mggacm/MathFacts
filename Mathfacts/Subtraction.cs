@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace Mathfacts
 {
-    class Division
+    class Subtraction
     {
-        public void DivisionTitle()
+        public void SubtractionTitle()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            string appTitle = @"    ____  _       _                     ______      __    __   
-   / __ \(_)   __(_)________  ____     /_  __/___ _/ /_  / /__ 
-  / / / / / | / / / ___/ __ \/ __ \     / / / __ `/ __ \/ / _ \
- / /_/ / /| |/ / (__  ) /_/ / / / /    / / / /_/ / /_/ / /  __/
-/_____/_/ |___/_/____/\____/_/ /_/    /_/  \__,_/_.___/_/\___/ 
-                                                               ";
+            string appTitle = @"   _____       __    __                  __  _           
+  / ___/__  __/ /_  / /__________ ______/ /_(_)___  ____ 
+  \__ \/ / / / __ \/ __/ ___/ __ `/ ___/ __/ / __ \/ __ \
+ ___/ / /_/ / /_/ / /_/ /  / /_/ / /__/ /_/ / /_/ / / / /
+/____/\__,_/_.___/\__/_/   \__,_/\___/\__/_/\____/_/ /_/ 
+                                                         ";
             Console.WriteLine(appTitle);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You will be able to select a starting number and an ending number between 1 - 10.");
-            Console.WriteLine("Next you will be will see the numbers between these selections be Divided.");
+            Console.WriteLine("Next you will be will see the numbers between these selections be subtracted");
             Console.WriteLine("to number 1 - 10");
             Console.WriteLine("");
             Console.WriteLine("Select a strating number between 1 and 10");
         }
 
-        public void DivisionTitle(double startNum, double endNum)
+        public void SubtractionTitle(int startNum, int endNum)
         {
-            for (double i = startNum - 1; i <= endNum; i++)
+            for (int i = startNum - 1; i <= endNum; i++)
             {
                 if (i == startNum - 1)
                 {
@@ -48,9 +48,9 @@ namespace Mathfacts
             for (int i = 1; i < 10; i++)
             {
                 Console.Write(string.Format("{0,6}", i));
-                for (double b = startNum; b <= endNum; b++)
+                for (int b = startNum; b <= endNum; b++)
                 {
-                    string output = string.Format("{0:0.00 } ", i / b);         //Here is the issue
+                    string output = string.Format("{0,6}", i - b);
                     Console.Write(output);
 
                 }

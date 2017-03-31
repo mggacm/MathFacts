@@ -16,6 +16,7 @@ namespace Mathfacts
             Addition addTable = new Addition();
             Multiplication multiplactation = new Multiplication();
             Division division = new Division();
+            Subtraction subtraction = new Subtraction();
             //MAIN LOOP
             do
             {   //MAIN TITILE SCREEN
@@ -159,8 +160,8 @@ namespace Mathfacts
                 if (choice == 3)
                 {
                     bool continueChoice = true;
-                    decimal startNum = 0;
-                    decimal endNum = 0;
+                    double startNum = 0;
+                    double endNum = 0;
                     do
                     {
                         division.DivisionTitle();
@@ -220,9 +221,73 @@ namespace Mathfacts
 
                 }
 
+                if (choice == 4)
+                {
+                    bool continueChoice = true;
+                    int startNum = 0;
+                    int endNum = 0;
+                    do
+                    {
+                        subtraction.SubtractionTitle();
+                        try
+                        {
+                            Console.WriteLine("Enter your staring number.");
+                            startNum = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter your ending number.");
+                            endNum = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Please enter a valid Number.");
+                            Console.ReadLine();
+
+                        }
+                        finally
+                        {
+                            if (startNum > 0 && endNum <= 10)
+                            {
+                                subtraction.SubtractionTitle();
+                                Console.WriteLine("");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Your Subtraction Table for {0} - {1}", startNum, endNum);
+                                //Console.ForegroundColor = ConsoleColor.White;  //Makes the table white
+                                Console.WriteLine("");
+                                subtraction.SubtractionTitle(startNum, endNum);
+
+                                Console.WriteLine("");
+                                try
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("Would you Like more subtraction facts [y/n]");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    string moreFacts = Console.ReadLine();
+                                    if (moreFacts == "y")
+                                    {
+                                        continueChoice = true;
+                                    }
+                                    else if (moreFacts == "n")
+                                    {
+                                        continueChoice = false;
+                                    }
+
+
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            }
+                        }
+
+                    } while (continueChoice == true);
+
+                }
+
                 //TODO - ABOVE ADD NEW OPTION
                 //BREAK OUT
-            } while (choice != 4);
+            } while (choice != 5);
         }
         //MENU
         private static int MainMenu()
@@ -236,7 +301,8 @@ namespace Mathfacts
             Console.WriteLine("Option 1: Addition Facts");
             Console.WriteLine("Option 2: Mutiplication Facts");
             Console.WriteLine("Option 3: Division Facts");
-            Console.WriteLine("Option 4: Quit Math Facts");
+            Console.WriteLine("Option 4: Subtraction Facts");
+            Console.WriteLine("Option 5: Quit Math Facts");
             //TODO - fix the exception handling
             choice = Int32.Parse(Console.ReadLine());
             return choice;
